@@ -114,18 +114,133 @@
           </div>
         </div>
 
-        <div class="hero-avatar-wrap">
-          <div class="futuristic-frame">
-            <div class="frame-orbit outer"></div>
-            <div class="frame-orbit inner"></div>
-            <div class="avatar-box">
-              <img id="profileImage" src="assets/images/profile.jpg" alt="Soumyajit Tripathy" loading="eager"
-                onerror="this.src='profile.jpg'" />
-              <div class="avatar-overlay"></div>
+        <div class="hero-hud-wrap" aria-label="Futuristic Developer Technology HUD">
+          <div class="hud-container">
+            <!-- Background Grid & Light Sweep -->
+            <div class="hud-grid-bg"></div>
+            <div class="hud-sweep-line"></div>
+
+            <!-- Glowing Floating Particles -->
+            <div class="hud-particle p-1"></div>
+            <div class="hud-particle p-2"></div>
+            <div class="hud-particle p-3"></div>
+            <div class="hud-particle p-4"></div>
+            <div class="hud-particle p-5"></div>
+
+            <!-- Decorative Circuit Traces SVG -->
+            <svg class="hud-circuit-svg" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Corner Brackets -->
+              <path d="M 40 100 L 40 40 L 100 40" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" opacity="0.6" />
+              <path d="M 460 100 L 460 40 L 400 40" stroke="#9d4edd" stroke-width="2" stroke-linecap="round" opacity="0.6" />
+              <path d="M 40 400 L 40 460 L 100 460" stroke="#9d4edd" stroke-width="2" stroke-linecap="round" opacity="0.6" />
+              <path d="M 460 400 L 460 460 L 400 460" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" opacity="0.6" />
+
+              <!-- Circuit Traces & Nodes -->
+              <path d="M 80 250 L 150 250 L 175 225" stroke="url(#cyanGrad)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.5" />
+              <path d="M 420 250 L 350 250 L 325 275" stroke="url(#purpleGrad)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.5" />
+              <path d="M 250 80 L 250 140" stroke="url(#purpleGrad)" stroke-width="1.5" opacity="0.4" />
+              <path d="M 250 420 L 250 360" stroke="url(#cyanGrad)" stroke-width="1.5" opacity="0.4" />
+
+              <!-- Connection Dots -->
+              <circle cx="80" cy="250" r="3" fill="#06b6d4" class="hud-node-dot" />
+              <circle cx="420" cy="250" r="3" fill="#9d4edd" class="hud-node-dot" />
+              <circle cx="250" cy="80" r="3" fill="#9d4edd" class="hud-node-dot" />
+              <circle cx="250" cy="420" r="3" fill="#06b6d4" class="hud-node-dot" />
+              
+              <!-- Gradient Definitions -->
+              <defs>
+                <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#9d4edd" />
+                  <stop offset="100%" stop-color="#f72585" />
+                </linearGradient>
+                <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#06b6d4" />
+                  <stop offset="100%" stop-color="#3b82f6" />
+                </linearGradient>
+              </defs>
+            </svg>
+
+            <!-- Orbit Ring 1: Inner Solid Neon Ring -->
+            <div class="hud-ring ring-inner-solid"></div>
+
+            <!-- Orbit Ring 2: Middle Dashed Purple Ring (Counter-Clockwise Orbit) -->
+            <div class="hud-ring ring-mid-dashed">
+              <!-- Skill Nodes on Orbit 2 (Radius ~135px) -->
+              <div class="hud-skill-slot pos-mid-1">
+                <div class="hud-skill-badge">
+                  <i class="fa-brands fa-java"></i><span>Java</span>
+                </div>
+              </div>
+              <div class="hud-skill-slot pos-mid-2">
+                <div class="hud-skill-badge">
+                  <i class="fa-brands fa-python"></i><span>Python</span>
+                </div>
+              </div>
+              <div class="hud-skill-slot pos-mid-3">
+                <div class="hud-skill-badge">
+                  <i class="fa-solid fa-code"></i><span>C++</span>
+                </div>
+              </div>
+              <div class="hud-skill-slot pos-mid-4">
+                <div class="hud-skill-badge">
+                  <i class="fa-brands fa-html5"></i><span>HTML</span>
+                </div>
+              </div>
+              <div class="hud-skill-slot pos-mid-5">
+                <div class="hud-skill-badge">
+                  <i class="fa-solid fa-c"></i><span>C</span>
+                </div>
+              </div>
             </div>
-            <div class="tech-tag tag-top"><i class="fa-brands fa-java"></i> Java</div>
-            <div class="tech-tag tag-bottom"><i class="fa-solid fa-microchip"></i> AI Tools</div>
-            <div class="tech-tag tag-right"><i class="fa-brands fa-html5"></i> Web Dev</div>
+
+            <!-- Orbit Ring 3: Outer Dashed Cyan/Purple Ring (Clockwise Orbit) -->
+            <div class="hud-ring ring-outer-dashed">
+              <!-- Skill Nodes on Orbit 3 (Radius ~185px) -->
+              <div class="hud-skill-slot pos-outer-1">
+                <div class="hud-skill-badge">
+                  <i class="fa-solid fa-globe"></i><span>Web Dev</span>
+                </div>
+              </div>
+              <div class="hud-skill-slot pos-outer-2">
+                <div class="hud-skill-badge">
+                  <i class="fa-solid fa-brain"></i><span>AI Tools</span>
+                </div>
+              </div>
+              <div class="hud-skill-slot pos-outer-3">
+                <div class="hud-skill-badge">
+                  <i class="fa-solid fa-database"></i><span>MySQL</span>
+                </div>
+              </div>
+              <div class="hud-skill-slot pos-outer-4">
+                <div class="hud-skill-badge">
+                  <i class="fa-solid fa-server"></i><span>PostgreSQL</span>
+                </div>
+              </div>
+              <div class="hud-skill-slot pos-outer-5">
+                <div class="hud-skill-badge">
+                  <i class="fa-solid fa-leaf"></i><span>MongoDB</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Central ST Emblem Badge -->
+            <div class="hud-center-badge">
+              <svg class="center-circuit-svg" viewBox="0 0 160 160" aria-hidden="true">
+                <circle cx="80" cy="80" r="74" stroke="rgba(157, 78, 221, 0.3)" stroke-width="1.5" stroke-dasharray="6 6" />
+                <circle cx="80" cy="80" r="66" stroke="rgba(6, 182, 212, 0.35)" stroke-width="1" />
+                <!-- Radar Tick Lines -->
+                <line x1="80" y1="6" x2="80" y2="14" stroke="#06b6d4" stroke-width="2" />
+                <line x1="80" y1="146" x2="80" y2="154" stroke="#06b6d4" stroke-width="2" />
+                <line x1="6" y1="80" x2="14" y2="80" stroke="#9d4edd" stroke-width="2" />
+                <line x1="146" y1="80" x2="154" y2="80" stroke="#9d4edd" stroke-width="2" />
+              </svg>
+
+              <div class="st-logo">
+                <span class="st-s">S</span><span class="st-t">T</span>
+              </div>
+              <div class="st-sub-text">IDENTITY v2.4</div>
+            </div>
+
           </div>
         </div>
       </div>

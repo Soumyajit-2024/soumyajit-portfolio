@@ -343,6 +343,35 @@
     }
   }
 
+  // 7. Interactive ST Tech HUD Parallax Tilt
+  function initHudInteractivity() {
+    const hudContainer = document.querySelector('.hud-container');
+    const heroSection = document.getElementById('hero');
+
+    if (!hudContainer || !heroSection) return;
+
+    heroSection.addEventListener('mousemove', function (e) {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const rect = hudContainer.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      const deltaX = (e.clientX - centerX) / (window.innerWidth / 2);
+      const deltaY = (e.clientY - centerY) / (window.innerHeight / 2);
+
+      const tiltX = (deltaY * -8).toFixed(2);
+      const tiltY = (deltaX * 8).toFixed(2);
+
+      hudContainer.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+      hudContainer.style.transition = 'transform 0.15s ease-out';
+    });
+
+    heroSection.addEventListener('mouseleave', function () {
+      hudContainer.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+      hudContainer.style.transition = 'transform 0.6s ease-out';
+    });
+  }
+
   // DOM Content Loaded Handler
   document.addEventListener('DOMContentLoaded', function () {
     initYear();
@@ -351,5 +380,6 @@
     initRadarChart();
     initContactForm();
     initScrollReveal();
+    initHudInteractivity();
   });
 })();

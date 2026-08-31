@@ -2105,9 +2105,104 @@ button, input, textarea {
   40% { transform: scale(1); opacity: 1; }
 }
 
+/* ==========================================================================
+   17. MOBILE RESPONSIVENESS FIXES
+   ========================================================================== */
+@media (max-width: 992px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  .certifications-compact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .container {
+    padding: 0 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .timeline-item {
+    padding-left: 35px !important;
+  }
+  
+  .timeline-line {
+    left: 16px !important;
+  }
+  
+  .timeline-item.left .timeline-dot, .timeline-item.right .timeline-dot {
+    left: 7px !important;
+  }
+  
+  input, textarea, .form-group, .input-wrap {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .hero-hud-wrap {
+    transform: scale(0.85);
+    margin: -20px 0;
+  }
+}
+
 @media (max-width: 480px) {
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 9vw, 2.5rem);
+    word-break: break-word;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+    word-break: break-word;
+  }
+  
+  .section-title {
+    font-size: clamp(1.8rem, 8vw, 2.2rem);
+    word-break: break-word;
+  }
+  
+  .hero-hud-wrap {
+    transform: scale(0.75);
+    margin-top: -30px;
+    margin-bottom: -40px;
+  }
+  
+  .radar-legend {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  canvas, img, svg {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .btn, .social-link, .nav-link, .menu-toggle {
+    min-height: 44px;
+  }
+  
+  /* Chatbot Mobile Fixes */
   .chatbot-window {
-    width: calc(100vw - 40px);
+    width: min(92vw, 420px);
+    max-width: calc(100vw - 24px);
     right: 0;
     bottom: 70px;
     position: absolute;
@@ -2116,10 +2211,42 @@ button, input, textarea {
   }
   .chatbot-container {
     bottom: 20px;
-    right: 20px;
+    right: 12px;
   }
   .chatbot-toggler {
     width: 48px;
     height: 48px;
+  }
+}
+
+@media (max-width: 375px) {
+  .hero-hud-wrap {
+    transform: scale(0.65);
+    margin-top: -40px;
+    margin-bottom: -50px;
+  }
+  
+  .timeline-item {
+    padding-left: 30px !important;
+  }
+  
+  .timeline-line {
+    left: 12px !important;
+  }
+  
+  .timeline-item.left .timeline-dot, .timeline-item.right .timeline-dot {
+    left: 3px !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .hero-hud-wrap {
+    transform: scale(0.55);
+    margin-top: -60px;
+    margin-bottom: -70px;
+  }
+  
+  .hero-title {
+    font-size: 1.8rem;
   }
 }

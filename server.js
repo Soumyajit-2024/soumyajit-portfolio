@@ -17,6 +17,12 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Handle favicon.ico fallback requests
+app.get("/favicon.ico", (req, res) => {
+  res.type("image/svg+xml");
+  res.sendFile(path.join(__dirname, "favicon.svg"));
+});
+
 // Serve static frontend files
 app.use(express.static(path.join(__dirname)));
 

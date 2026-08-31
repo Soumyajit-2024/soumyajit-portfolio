@@ -12,6 +12,9 @@
   <meta property="og:type" content="website" />
   <title>Soumyajit Tripathy | Computer Science Student & Developer</title>
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,9 +22,8 @@
     href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
 
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Local Font Awesome Icons -->
+  <link rel="stylesheet" href="assets/fontawesome.min.css" />
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -38,8 +40,82 @@
   <header class="navbar" id="navbar">
     <div class="nav-container">
       <a class="nav-brand" href="#hero" aria-label="Soumyajit Tripathy Home">
-        <span class="brand-glow"></span>
-        <span class="brand-text">Soumyajit<span class="dot">.</span></span>
+        <span class="brand-glow" aria-hidden="true"></span>
+        <div class="brand-logo-wrapper" aria-hidden="true">
+          <svg class="brand-s-logo" viewBox="0 8 88 73" width="34" height="28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <!-- Main Purple to Cyan Gradient -->
+              <linearGradient id="sMainGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#3b82f6" />
+                <stop offset="45%" stop-color="#8b5cf6" />
+                <stop offset="80%" stop-color="#c77dff" />
+                <stop offset="100%" stop-color="#e0aaff" />
+              </linearGradient>
+
+              <!-- Secondary Inner Layer Gradient -->
+              <linearGradient id="sInnerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.95" />
+                <stop offset="100%" stop-color="#e0aaff" stop-opacity="0.95" />
+              </linearGradient>
+
+              <!-- Neon Glow Filter -->
+              <filter id="sGlowFilter" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="2.5" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              
+              <!-- Sparkle Star Glow -->
+              <radialGradient id="starGlowGrad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+                <stop offset="40%" stop-color="#c77dff" stop-opacity="0.8" />
+                <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+
+            <!-- Circuit Lines on the left -->
+            <g class="circuit-group">
+              <!-- Top circuit line -->
+              <path d="M 38,27 L 18,27" stroke="url(#sMainGrad)" stroke-width="1.8" stroke-linecap="round" class="circuit-line line-1" />
+              <circle cx="15" cy="27" r="3" fill="#07080e" stroke="url(#sMainGrad)" stroke-width="1.8" class="circuit-node node-1" />
+              <circle cx="15" cy="27" r="1.2" fill="#22d3ee" class="circuit-dot dot-1" />
+
+              <!-- Middle circuit line -->
+              <path d="M 32,44 L 22,44" stroke="url(#sMainGrad)" stroke-width="1.8" stroke-linecap="round" class="circuit-line line-2" />
+              <circle cx="19" cy="44" r="2.8" fill="#07080e" stroke="url(#sMainGrad)" stroke-width="1.8" class="circuit-node node-2" />
+              <circle cx="19" cy="44" r="1" fill="#c77dff" class="circuit-dot dot-2" />
+
+              <!-- Bottom circuit line -->
+              <path d="M 30,59 L 20,59 L 12,69 L 8,69" stroke="url(#sMainGrad)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="circuit-line line-3" />
+              <circle cx="5" cy="69" r="2.8" fill="#07080e" stroke="url(#sMainGrad)" stroke-width="1.8" class="circuit-node node-3" />
+              <circle cx="5" cy="69" r="1" fill="#22d3ee" class="circuit-dot dot-3" />
+            </g>
+
+            <!-- Stylized S Symbol Body -->
+            <g class="s-symbol-body" filter="url(#sGlowFilter)">
+              <!-- Top Half of S -->
+              <path d="M 44,17 L 82,17 L 82,27 L 57,27 L 47,38 L 68,38 L 56,51 L 44,51 L 34,35 Z" 
+                    fill="url(#sMainGrad)" class="s-part s-top" />
+              
+              <!-- Bottom Half of S -->
+              <path d="M 58,46 L 70,46 L 81,59 L 81,72 L 71,78 L 40,78 L 28,64 L 28,54 L 39,54 L 45,63 L 68,63 L 58,46 Z" 
+                    fill="url(#sMainGrad)" class="s-part s-bottom" />
+
+              <!-- Double Layer Tech Accent Overlay -->
+              <path d="M 46,20 L 78,20 M 55,30 L 49,38 M 65,41 L 57,49 M 60,49 L 77,59 L 77,70 M 68,75 L 42,75" 
+                    stroke="url(#sInnerGrad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="s-inner-tech" />
+            </g>
+
+            <!-- Sparkle Star atop the top-right corner of S -->
+            <g class="sparkle-group" transform="translate(82, 13)">
+              <circle cx="0" cy="0" r="9" fill="url(#starGlowGrad)" class="sparkle-glow-bg" />
+              <path d="M 0,-8 Q 0,0 8,0 Q 0,0 0,8 Q 0,0 -8,0 Q 0,0 0,-8 Z" fill="#ffffff" class="sparkle-star" />
+            </g>
+          </svg>
+        </div>
+        <span class="brand-text">oumyajit<span class="dot">.</span></span>
       </a>
 
       <button id="menuToggle" class="menu-toggle" aria-controls="primaryNav" aria-expanded="false"
@@ -582,6 +658,10 @@
             <span>C++ Essentials 1 & 2</span>
           </div>
           <div class="glass-card cert-badge-card">
+            <i class="fa-solid fa-file-code cert-icon"></i>
+            <span>C++ Advanced</span>
+          </div>
+          <div class="glass-card cert-badge-card">
             <i class="fa-brands fa-python cert-icon"></i>
             <span>Python Essentials 1</span>
           </div>
@@ -592,6 +672,18 @@
           <div class="glass-card cert-badge-card">
             <i class="fa-solid fa-cloud cert-icon"></i>
             <span>Oracle Cloud Infrastructure Certified AI Foundation Associate</span>
+          </div>
+          <div class="glass-card cert-badge-card">
+            <i class="fa-solid fa-brain cert-icon"></i>
+            <span>TCS iON Career Edge – AI Foundation</span>
+          </div>
+          <div class="glass-card cert-badge-card">
+            <i class="fa-solid fa-shield-halved cert-icon"></i>
+            <span>Fortinet Cybersecurity and Cloud Fundamentals 1.0</span>
+          </div>
+          <div class="glass-card cert-badge-card">
+            <i class="fa-solid fa-code-fork cert-icon"></i>
+            <span>HackSprint 2.0 Participation</span>
           </div>
         </div>
       </div>

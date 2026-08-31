@@ -336,20 +336,136 @@ button, input, textarea {
 
 .nav-brand {
   font-family: var(--font-heading);
-  font-size: 1.6rem;
+  font-size: 1.65rem;
   font-weight: 800;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.4px;
   position: relative;
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  gap: 0px;
+  text-decoration: none;
+  transition: transform var(--transition-fast);
 }
 
+.brand-logo-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  line-height: 1;
+}
+
+.brand-s-logo {
+  display: block;
+  width: 34px;
+  height: 28px;
+  overflow: visible;
+  filter: drop-shadow(0 0 6px rgba(157, 78, 221, 0.45)) drop-shadow(0 0 12px rgba(59, 130, 246, 0.3));
+  transition: filter var(--transition-smooth), transform var(--transition-smooth);
+  animation: sNeonPulse 3.5s ease-in-out infinite alternate;
+}
+
+/* Hover effects for logo */
+.nav-brand:hover .brand-s-logo {
+  filter: drop-shadow(0 0 10px rgba(199, 125, 255, 0.75)) 
+          drop-shadow(0 0 18px rgba(59, 130, 246, 0.6));
+  transform: scale(1.03);
+}
+
+/* Animations for Logo Parts */
+.sparkle-group {
+  animation: sparklePulse 2.8s ease-in-out infinite alternate;
+  transform-origin: 82px 13px;
+}
+
+.sparkle-glow-bg {
+  animation: sparkleGlowFade 2.8s ease-in-out infinite alternate;
+}
+
+.circuit-line {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 0;
+  animation: circuitFlow 4s linear infinite;
+}
+
+.circuit-dot {
+  animation: dotGlowPulse 2s ease-in-out infinite alternate;
+}
+
+/* Brand Text Styling */
 .brand-text {
-  color: var(--text-main);
+  color: #ffffff;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  letter-spacing: -0.3px;
+  transition: text-shadow var(--transition-smooth), color var(--transition-fast);
 }
 
 .brand-text .dot {
   color: var(--neon-purple-bright);
+  transition: text-shadow var(--transition-smooth), transform var(--transition-fast);
+  display: inline-block;
+}
+
+.nav-brand:hover .brand-text {
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.5), 0 0 20px rgba(199, 125, 255, 0.4);
+}
+
+.nav-brand:hover .brand-text .dot {
+  text-shadow: 0 0 12px rgba(199, 125, 255, 0.9), 0 0 22px rgba(157, 78, 221, 0.8);
+  transform: scale(1.15);
+}
+
+/* Keyframes for subtle animations */
+@keyframes sNeonPulse {
+  0% {
+    filter: drop-shadow(0 0 6px rgba(157, 78, 221, 0.4)) drop-shadow(0 0 12px rgba(59, 130, 246, 0.25));
+  }
+  100% {
+    filter: drop-shadow(0 0 10px rgba(199, 125, 255, 0.65)) drop-shadow(0 0 20px rgba(34, 211, 238, 0.45));
+  }
+}
+
+@keyframes sparklePulse {
+  0% {
+    transform: translate(82px, 13px) scale(0.9);
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate(82px, 13px) scale(1.15);
+    opacity: 1;
+  }
+}
+
+@keyframes sparkleGlowFade {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes circuitFlow {
+  0% {
+    stroke-dashoffset: 40;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dotGlowPulse {
+  0% {
+    opacity: 0.6;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
 }
 
 .nav-links {
@@ -1738,4 +1854,13 @@ button, input, textarea {
   .hud-center-badge { width: 100px; height: 100px; }
   .st-logo { font-size: 1.9rem; }
   .st-sub-text { font-size: 0.5rem; letter-spacing: 1px; }
+
+  .nav-brand {
+    font-size: 1.3rem;
+    gap: 0px;
+  }
+  .brand-s-logo {
+    width: 30px;
+    height: 26px;
+  }
 }

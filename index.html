@@ -804,6 +804,44 @@
     </div>
   </footer>
 
+  <!-- AI Chatbot UI -->
+  <div class="chatbot-container">
+    <button class="chatbot-toggler" aria-label="Toggle Chatbot">
+      <span class="chatbot-icon-open">
+        <!-- AI/Robot Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg>
+      </span>
+      <span class="chatbot-icon-close">
+        <!-- Close Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </span>
+    </button>
+    <div class="chatbot-window glass-card">
+      <div class="chatbot-header">
+        <div>
+          <h3>ST AI Assistant</h3>
+          <p>Ask me about Soumyajit</p>
+        </div>
+        <button class="chatbot-close-btn" aria-label="Close Chat">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="chatbot-messages" id="chatbotMessages">
+        <div class="chat-msg ai-msg">
+          <div class="msg-bubble">
+            Hi! I'm Soumyajit's AI assistant. Ask me about his skills, projects, education, internships, certifications, or experience.
+          </div>
+        </div>
+      </div>
+      <div class="chatbot-input-area">
+        <input type="text" id="chatInput" placeholder="Ask a question..." autocomplete="off">
+        <button id="sendChatBtn" aria-label="Send Message">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 

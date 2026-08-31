@@ -383,3 +383,116 @@
     initHudInteractivity();
   });
 })();
+
+/* ==========================================================================
+   16. AI CHATBOT LOGIC
+   ========================================================================== */
+const chatbotContainer = document.querySelector('.chatbot-container');
+const chatbotToggler = document.querySelector('.chatbot-toggler');
+const chatbotCloseBtn = document.querySelector('.chatbot-close-btn');
+const chatInput = document.getElementById('chatInput');
+const sendChatBtn = document.getElementById('sendChatBtn');
+const chatbotMessages = document.getElementById('chatbotMessages');
+
+if (chatbotToggler && chatbotCloseBtn && chatbotContainer) {
+  // Toggle chatbot visibility
+  chatbotToggler.addEventListener('click', () => {
+    chatbotContainer.classList.toggle('show-chatbot');
+  });
+
+  chatbotCloseBtn.addEventListener('click', () => {
+    chatbotContainer.classList.remove('show-chatbot');
+  });
+}
+
+function appendMessage(sender, text) {
+  const msgDiv = document.createElement('div');
+  msgDiv.classList.add('chat-msg', sender === 'user' ? 'user-msg' : 'ai-msg');
+  
+  const bubbleDiv = document.createElement('div');
+  bubbleDiv.classList.add('msg-bubble');
+  bubbleDiv.textContent = text;
+  
+  msgDiv.appendChild(bubbleDiv);
+  chatbotMessages.appendChild(msgDiv);
+  
+  // Auto-scroll to bottom
+  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+}
+
+function showTypingIndicator() {
+  const typingDiv = document.createElement('div');
+  typingDiv.classList.add('chat-msg', 'ai-msg', 'typing-indicator-wrapper');
+  
+  const bubbleDiv = document.createElement('div');
+  bubbleDiv.classList.add('msg-bubble', 'typing-indicator');
+  
+  bubbleDiv.innerHTML = `
+    <div class="typing-dot"></div>
+    <div class="typing-dot"></div>
+    <div class="typing-dot"></div>
+  `;
+  
+  typingDiv.appendChild(bubbleDiv);
+  chatbotMessages.appendChild(typingDiv);
+  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  return typingDiv;
+}
+
+function removeTypingIndicator(indicator) {
+  if (indicator && indicator.parentNode) {
+    indicator.parentNode.removeChild(indicator);
+  }
+}
+
+async function handleChat() {
+  const message = chatInput.value.trim();
+  if (!message) return;
+  
+  // Append User message
+  appendMessage('user', message);
+  chatInput.value = '';
+  
+  // Show typing indicator
+  const typingIndicator = showTypingIndicator();
+  
+  try {
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ message })
+    });
+    
+    removeTypingIndicator(typingIndicator);
+    
+    if (response.ok) {
+      const data = await response.json();
+      appendMessage('ai', data.reply);
+    } else {
+      let errorMsg = "I'm having trouble connecting to my brain right now. Please try again later!";
+      try {
+        const errData = await response.json();
+        if (errData.error) errorMsg = `Error: ${errData.error}`;
+      } catch (e) {
+        // ignore parse error
+      }
+      appendMessage('ai', errorMsg);
+    }
+  } catch (error) {
+    console.error('Chat API Error:', error);
+    removeTypingIndicator(typingIndicator);
+    appendMessage('ai', "Oops! Something went wrong on the network. Please try again.");
+  }
+}
+
+if (sendChatBtn && chatInput) {
+  sendChatBtn.addEventListener('click', handleChat);
+  
+  chatInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      handleChat();
+    }
+  });
+}
